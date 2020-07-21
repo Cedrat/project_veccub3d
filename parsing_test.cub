@@ -1,0 +1,15 @@
+R 1000 1000
+C 33,43,19
+F 120,145,100
+
+NO      ./OKN.xpm
+SO ./OKS.xpm
+WE ./OKN.xpm
+EA ./OKN.xpm
+S   ./OKSss.xpm
+
+111111
+100111
+110001
+10W001
+111111
