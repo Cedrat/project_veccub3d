@@ -6,7 +6,7 @@
 /*   By: lnoaille <lnoaille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 01:29:46 by lnoaille          #+#    #+#             */
-/*   Updated: 2020/07/22 01:45:23 by lnoaille         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:07:29 by lnoaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ typedef struct	 s_img
 	char 	side;
 }				t_img;
 
+int	keycode(int keycode, t_img *img);
+int	keycode2(int keycode, t_img *img);
 int		until_next_wall(t_img *param, int step_x, int step_y);
 int ft_view(t_img *param, int res_x);
 void            ft_mlx_pixel_put(t_img *data, int x, int y, int color);

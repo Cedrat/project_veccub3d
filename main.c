@@ -6,7 +6,7 @@
 /*   By: lnoaille <lnoaille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 21:06:12 by lnoaille          #+#    #+#             */
-/*   Updated: 2020/07/22 00:15:51 by lnoaille         ###   ########.fr       */
+/*   Updated: 2020/07/22 15:50:28 by lnoaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int main()
 		img->img_addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 		ft_view(img, img->res_x);
 		mlx_put_image_to_window(img->mlx_ptr,img->mlx_wd, img->img, 0, 0);
+		mlx_hook(img->mlx_wd, 2, 1L<<0, keycode, img);
 		mlx_loop(img->mlx_ptr);
 }

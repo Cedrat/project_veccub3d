@@ -6,7 +6,7 @@
 /*   By: lnoaille <lnoaille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 00:03:24 by lnoaille          #+#    #+#             */
-/*   Updated: 2020/07/22 01:23:32 by lnoaille         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:00:46 by lnoaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	ft_create_wall(double dist_wall, int pixel, t_img *img)
 {
 	int h;
 	int y;
+	int i;
 
+	i = 0;
 	h = (int)(img->res_y / (dist_wall));
 	y = 0;
 	while (y < (img->res_y / 2 - h / 2) && y < img->res_y)
@@ -42,10 +44,11 @@ void	ft_create_wall(double dist_wall, int pixel, t_img *img)
 		ft_mlx_pixel_put(img, pixel, y, img->skin->c);
 		y++;
 	}
-	while (y < h && y < img->res_y)
+	while (i < h && y < img->res_y)
 	{
 		ft_mlx_pixel_put(img, pixel, y, 0xAA77AA);
 		y++;
+		i++;
 	}
 	while (y < img->res_y)
 	{
