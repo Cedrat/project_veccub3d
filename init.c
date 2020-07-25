@@ -6,7 +6,7 @@
 /*   By: lnoaille <lnoaille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 20:05:50 by lnoaille          #+#    #+#             */
-/*   Updated: 2020/07/19 00:58:49 by lnoaille         ###   ########.fr       */
+/*   Updated: 2020/07/23 19:33:38 by lnoaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_img	*ft_init_s_img(void)
 	t_img *img;
 
 	if (!(img = malloc(sizeof(t_img))))
+		return (0);
+	if (!(img->draw_sp = malloc(sizeof(t_draw_sp))))
 		return (0);
 	if (!(img->skin = malloc(sizeof(t_textures))))
 		return (0);

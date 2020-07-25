@@ -6,7 +6,7 @@
 /*   By: lnoaille <lnoaille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 00:14:25 by lnoaille          #+#    #+#             */
-/*   Updated: 2020/07/22 00:49:44 by lnoaille         ###   ########.fr       */
+/*   Updated: 2020/07/22 19:18:46 by lnoaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,12 @@ void	ft_mlx_pixel_put(t_img *data, int x, int y, int color)
 	dst = data->img_addr + (y * data->line_length + x *
 		(data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+double	ft_floatypart(double a)
+{
+	if (a < 0)
+		a = -a;
+	a = a - (int)a;
+	return (a);
 }

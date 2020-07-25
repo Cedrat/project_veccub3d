@@ -6,7 +6,7 @@
 /*   By: lnoaille <lnoaille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 16:30:59 by lnoaille          #+#    #+#             */
-/*   Updated: 2020/07/22 01:33:02 by lnoaille         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:02:23 by lnoaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ double	ft_distance_to_wall(t_img *param, double screenx)
 	step_y = sidedist_direction(&param->sidedist_y,
 		param->raydir_y, param->pos_y, param->map_y);
 	side = until_next_wall(param, step_x, step_y);
+	ft_who_side(param, side);
 	if (side == 0)
 		return ((param->map_x - param->pos_x +
 			(1 - step_x) / 2) / param->raydir_x);
@@ -73,4 +74,16 @@ int		until_next_wall(t_img *param, int step_x, int step_y)
 			hit = 1;
 	}
 	return (side);
+}
+
+void	ft_who_side(t_img *param, int side)
+{
+	if (side == 1 && param->raydir_y < 0)
+		param->side = 'N';
+	else if (side == 1)
+		param->side = 'S';
+	else if (param->raydir_x > 0)
+		param->side = 'E';
+	else
+		param->side = 'W';
 }

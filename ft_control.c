@@ -6,7 +6,7 @@
 /*   By: lnoaille <lnoaille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 15:44:37 by lnoaille          #+#    #+#             */
-/*   Updated: 2020/07/22 16:39:24 by lnoaille         ###   ########.fr       */
+/*   Updated: 2020/07/23 20:07:19 by lnoaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	keycode(int keycode, t_img *img)
 	}
 	else
 		return (keycode2(keycode, img));
-	ft_view(img, img->res_x);
+	ft_view(img, img->res_x, img->draw_sp);
 	mlx_put_image_to_window(img->mlx_ptr, img->mlx_wd, img->img, 0, 0);
 }
 
@@ -63,6 +63,6 @@ int	keycode2(int keycode, t_img *img)
 		img->planeX = img->planeX * cos(angle) - img->planeY * sin(angle);
 		img->planeY = img->planeY * cos(angle) + oldplane_x * sin(angle);
 	}
-	ft_view(img, img->res_x);
+	ft_view(img, img->res_x, img->draw_sp);
 	mlx_put_image_to_window(img->mlx_ptr, img->mlx_wd, img->img, 0, 0);
 }

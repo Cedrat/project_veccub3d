@@ -6,7 +6,7 @@
 /*   By: lnoaille <lnoaille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 01:29:46 by lnoaille          #+#    #+#             */
-/*   Updated: 2020/07/22 16:07:29 by lnoaille         ###   ########.fr       */
+/*   Updated: 2020/07/24 21:55:47 by lnoaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,21 @@ typedef struct	 s_textures
 	t_wall *Sp;
 }				t_textures;
 
+
+typedef struct	s_draw_sprites
+{
+	double	inv_det;
+	double	transform_x;
+	double	transform_y;
+	double	perp_dist;
+	int 	nb_sprite;
+	int		sp_screenx;
+	int		sp_h;
+	double *sp_x;
+	double *sp_y;
+	double *dist_to_p;
+}				t_draw_sp;
+
 typedef struct	 s_img
 {
 	double pos_x;
@@ -60,6 +75,7 @@ typedef struct	 s_img
 	double planeY;
 	double sidedist_x;
 	double sidedist_y;
+	double perpdist;
 	int 	map_x;
 	int		map_y;
 	double raydir_x;
@@ -78,12 +94,26 @@ typedef struct	 s_img
 	size_t  map_heigth;
 	t_textures *skin;
 	char 	side;
+	t_draw_sp *draw_sp;
+	double 	*z_buffer; 
 }				t_img;
 
+void draw_sprite(t_img *img, t_draw_sp *dsp);
+int ft_put_sp_xy(t_img *param, t_draw_sp *dsp);
+int ft_count_sp(t_img *param);
+void ft_calcul_for_sp(t_draw_sp *dsp, t_img *img);
+int	ft_sp(t_img *img, int h, int x, int *y);
+void	ft_create_sprite(t_draw_sp *dsp, int pixel, t_img *img);
+double ft_floatypart(double a);
+int ft_wall_n(t_img *img, int h, int x, int *y);
+int ft_wall_e(t_img *img, int h, int x, int *y);
+int ft_wall_w(t_img *img, int h, int x, int *y);
+int ft_wall_s(t_img *img, int h, int x, int *y);
+void ft_who_side(t_img *param, int side);
 int	keycode(int keycode, t_img *img);
 int	keycode2(int keycode, t_img *img);
 int		until_next_wall(t_img *param, int step_x, int step_y);
-int ft_view(t_img *param, int res_x);
+int		ft_view(t_img *param, int res_x, t_draw_sp *dsp);
 void            ft_mlx_pixel_put(t_img *data, int x, int y, int color);
 void	ft_create_wall(double dist_wall, int pixel, t_img *img);
 double ft_abs(double a);
@@ -126,6 +156,7 @@ int ft_create_rgb(int r, int g, int b);
 t_img *ft_init_s_img(void);
 int sidedist_direction(double *sideDist, double raydir, double pos, int map);
 void init_vect_pos(t_img *param);
-
+void ft_dist_to_p(t_img *img, t_draw_sp * dsp, double pos_x, double pos_y);
+void ft_quicksort(t_draw_sp *dsp);
 
 #endif
